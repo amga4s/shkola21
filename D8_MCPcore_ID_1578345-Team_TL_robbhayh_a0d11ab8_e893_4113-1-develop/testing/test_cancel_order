@@ -1,0 +1,11 @@
+from src.domain import can_cancel, can_pickup
+
+def test_can_cancel_only_created():
+    assert can_cancel({"status": "created"}) is True
+    assert can_cancel({"status": "cancelled"}) is False
+    assert can_cancel({"status": "picked_up"}) is False
+
+def test_can_pickup_only_created():
+    assert can_pickup({"status": "created"}) is True
+    assert can_pickup({"status": "cancelled"}) is False
+    assert can_pickup({"status": "picked_up"}) is False
